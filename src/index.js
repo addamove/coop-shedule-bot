@@ -7,7 +7,7 @@ const { Bot } = require('@dlghq/dialog-bot-sdk');
 const path = require('path');
 
 const bot = new Bot({
-  endpoints: [],
+  endpoints: ['wss://ws1.dlg.im'],
   phone: '7555123321',
   code: '5555',
 });
