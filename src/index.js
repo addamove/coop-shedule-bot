@@ -3,13 +3,15 @@ TODO
 
 */
 
-const { Bot } = require('@dlghq/dialog-bot-sdk');
-const path = require('path');
+const { Bot } = require("@dlghq/dialog-bot-sdk");
+const path = require("path");
+const config = require("./config");
+const API = require("./API");
 
 const bot = new Bot({
-  endpoints: ['wss://ws1.dlg.im'],
-  phone: '7555123321',
-  code: '5555',
+  endpoints: ["wss://ws1.dlg.im"],
+  phone: "7555123321",
+  code: "5555"
 });
 
 const state = {};
