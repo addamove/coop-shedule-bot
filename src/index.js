@@ -7,98 +7,101 @@ const { Bot } = require('@dlghq/dialog-bot-sdk');
 
 const bot = new Bot({
   endpoints: ['wss://ws1.coopintl.com'],
-  username: 'shbot',
+  username: 'testbot',
   password: '666',
 });
 
-bot.onMessage(async (peer) => {
-  bot.sendInteractiveMessage(
-    peer,
-    'Выберите площадку.',
+bot.onMessage(async (peer, message) => {
+  bot.sendTextMessage(peer, JSON.stringify(message));
+  if (peer.type !== 'group' || message.content.text.split(' ')[0] === '@shbot') {
+    bot.sendInteractiveMessage(
+      peer,
+      'Выберите площадку.',
 
-    [
-      {
-        actions: [
-          {
-            id: 'Кооп технологии.',
-            widget: {
-              type: 'button',
-              label: 'Кооп технологии',
-              value: 'Кооп технологии_1',
+      [
+        {
+          actions: [
+            {
+              id: 'Кооп технологии.',
+              widget: {
+                type: 'button',
+                label: 'Кооп технологии',
+                value: 'Кооп технологии_1',
+              },
             },
-          },
-          {
-            id: 'Авто превью.',
-            widget: {
-              type: 'button',
-              label: 'Авто превью',
-              value: 'Авто превью_1',
+            {
+              id: 'Авто превью.',
+              widget: {
+                type: 'button',
+                label: 'Авто превью',
+                value: 'Авто превью_1',
+              },
             },
-          },
-        ],
-      },
-      {
-        actions: [
-          {
-            id: 'Эстафета опыта',
-            widget: {
-              type: 'button',
-              label: 'Эстафета опыта',
-              value: 'Эстафета опыта_1',
+          ],
+        },
+        {
+          actions: [
+            {
+              id: 'Эстафета опыта',
+              widget: {
+                type: 'button',
+                label: 'Эстафета опыта',
+                value: 'Эстафета опыта_1',
+              },
             },
-          },
-          {
-            id: 'Своя еда',
-            widget: {
-              type: 'button',
-              label: 'Своя еда',
-              value: 'Своя еда_1',
+            {
+              id: 'Своя еда',
+              widget: {
+                type: 'button',
+                label: 'Своя еда',
+                value: 'Своя еда_1',
+              },
             },
-          },
-        ],
-      },
-      {
-        actions: [
-          {
-            id: 'Кооп коммерция.',
-            widget: {
-              type: 'button',
-              label: 'Кооп коммерция',
-              value: 'Кооп коммерция_1',
+          ],
+        },
+        {
+          actions: [
+            {
+              id: 'Кооп коммерция.',
+              widget: {
+                type: 'button',
+                label: 'Кооп коммерция',
+                value: 'Кооп коммерция_1',
+              },
             },
-          },
-          {
-            id: 'Кооп образование.',
-            widget: {
-              type: 'button',
-              label: 'Кооп образование',
-              value: 'Кооп образование_1',
+            {
+              id: 'Кооп образование.',
+              widget: {
+                type: 'button',
+                label: 'Кооп образование',
+                value: 'Кооп образование_1',
+              },
             },
-          },
-        ],
-      },
-      {
-        actions: [
-          {
-            id: 'Стать кооператором.',
-            widget: {
-              type: 'button',
-              label: 'Стать кооператором',
-              value: 'Стать кооператором_1',
+          ],
+        },
+        {
+          actions: [
+            {
+              id: 'Стать кооператором.',
+              widget: {
+                type: 'button',
+                label: 'Стать кооператором',
+                value: 'Стать кооператором_1',
+              },
             },
-          },
-          {
-            id: 'Моя кооперация.',
-            widget: {
-              type: 'button',
-              label: 'Моя кооперация',
-              value: 'Моя кооперация_1',
+            {
+              id: 'Моя кооперация.',
+              widget: {
+                type: 'button',
+                label: 'Моя кооперация',
+                value: 'Моя кооперация_1',
+              },
             },
-          },
-        ],
-      },
-    ],
-  );
+          ],
+        },
+      ],
+    );
+  }
 });
 
 bot.onInteractiveEvent(async (event) => {
