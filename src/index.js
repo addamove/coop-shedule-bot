@@ -7,7 +7,7 @@ const { Bot } = require('@dlghq/dialog-bot-sdk');
 
 const bot = new Bot({
   endpoints: ['wss://ws1.coopintl.com'],
-  username: 'testbot',
+  username: 'shbot',
   password: '666',
 });
 
